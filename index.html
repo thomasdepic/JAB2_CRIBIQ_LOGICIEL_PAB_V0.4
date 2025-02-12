@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carte avec curseur de profondeur</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Conteneur de la carte -->
+  <div id="map"></div>
+
+
+  <!-- Bulle d'information pour afficher l'aire du polygone -->
+  <div id="infoBubble"></div>
+  <!-- Bulle d'information pour afficher le nombre de point de mesure-->
+  <dic id="infoBubbleCount"></div>
+
+
+<!-- Conteneur des curseurs -->
+<div id="slidersContainer">
+    <!-- Curseur pour la profondeur -->
+    <div class="slider-container">
+        <label for="profondeurSlider">Profondeur :</label>
+        <input id="profondeurSlider" type="range" min="2" max="4" value="3" step="0.1">
+        <span id="profondeurValue">3</span> m
+    </div>
+    <!-- Curseur pour la pente -->
+    <div class="slider-container">
+        <label for="penteSlider">Pente :</label>
+        <input id="penteSlider" type="range" min="0" max="100" value="33" step="1">
+        <span id="penteValue">33</span> %
+    </div>
+    <!-- Curseur pour gerer la distance entre deux prise de mesure-->
+    <div class="slider-container"></div>
+        <label for="cellSizeSlider">Distance entre les sommets (m) :</label>
+        <input type="range" id="cellSizeSlider" min="1" max="30" step="1" value="10">
+        <span id="cellSizeValue">10</span> m
+    </div>   
+    <!-- Courseur pour gerer l'orientation de la grille--> 
+    <div class="slider-container"></div>
+        <label for="gridAngleSlider">Orientation de la grille (°) :</label>
+        <input type="range" id="gridAngleSlider" min="0" max="180" step="1" value="0">
+        <span id="gridAngleValue">0</span>
+    </div>
+</div>
+
+
+  <!-- Bouton pour afficher le buffer negatif-->
+  <button id="shrinkBtn">Réduire le polygone</button>
+
+  <!-- Télécharger et charger les données sur un fichier JSON-->
+  <button id="saveFile">Télécharger les données</button>
+  <button id="loadFile">Charger un fichier</button>
+  <input type="file" id="fileInput" style="display:none;">
+
+
+  <!-- Bibliothèques Leaflet, Leaflet.Editable et Turf.js -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/Leaflet/Leaflet.Editable@latest/src/Leaflet.Editable.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script>
+
+  <!-- Lier les script -->
+    <script src="scripts/map.js"></script>
+    <script src="scripts/polygon.js"></script>
+    <script src="scripts/bufferFond.js"></script>
+    <script src="scripts/bufferDemi.js"></script>
+    <script src="scripts/storage.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/intersections.js"></script>
+</body>
+</html>
